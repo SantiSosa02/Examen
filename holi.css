@@ -1,0 +1,27 @@
+.botoncito {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 15px;
+    padding-left: 9px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 100px;
+    height: 80px; /* Ajusta la altura según tus necesidades */
+    
+}
+
+.botoncito button {
+    background-color:green;
+}
+h1{
+    text-align: center;
+    font-size: 45px;
+}
+.modal{
+    padding-top: 45px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    width: 40%;
+}
+

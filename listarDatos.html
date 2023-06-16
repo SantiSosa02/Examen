@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <!--SweetAlert2-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="holi.css">
+    
+    <title>Listar</title>
+</head>
+<body onload="listarDatos()">
+  <h1>Colegios</h1>
+  <div class="botoncito"> 
+  <button id="btnAbrirModal" class="btn waves-effect waves-light" type="button" name="action">Registrar</button>
+</div>
+    <div class="container">
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Direccion</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Descripcion</th>
+                    <th>Fecha Reporte</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="contenido"></tbody>
+        </table>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="container">
+            <div class="row">
+                <form class="col s12">
+                    <input id="id" type="hidden">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">accessibility</i>
+                            <input id="direccion" type="text" class="validate" placeholder="Nombre">
+                            <label for="direccion">Direccion</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="latitud" type="text" class="validate" placeholder="latitud">
+                            <label for="latitud">latitud</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="longitud" type="number" class="validate" placeholder="Longitud">
+                            <label for="longitud">Longitud</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="descripcion" type="text" class="validate" placeholder="Descripcion">
+                            <label for="descripcion">Descripcion</label>
+                        </div>
+                    </div>
+                    <button id="btnActualizar" class="btn waves-effect waves-light" type="button" name="action">
+                        Actualizar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modalRegistro" class="modal">
+        <div class="container">
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">accessibility</i>
+                            <input id="direccionRegistro" type="text" class="validate" placeholder="Direccon">
+                            <label for="direccionRegistro">Direccion</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="latitudRegistro" type="number" class="validate" placeholder="Latitud">
+                            <label for="latitudRegistro">Latitud</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="longitudRegistro" type="number" class="validate" placeholder="Longitud">
+                            <label for="longitudRegistro">Longitud</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="descripcionRegistro" type="text" class="validate" placeholder="Descripcion">
+                            <label for="descripcionRegistro">Descripcion</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="fechaReporte" type="number" class="disabled" placeholder="Descripcion" disabled>
+                            <label for="fechaReporte">Fecha reporte</label>
+                        </div>
+                    </div>
+                    <button id="btnRegistrar" class="btn waves-effect waves-light" type="button" name="action">
+                      Registrar
+                      <i class="material-icons right">send</i>
+                  </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Agrega un botón para abrir el modal de registrar -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/funciones/funciones.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, {});
+        });
+
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+    </script>
+    <script>
+    $(document).ready(function() {
+      // Evento de clic para abrir el modal de registrar
+      $('#btnAbrirModal').click(function() {
+        $('#modalRegistro').modal('open');
+      });
+    });
+  </script>
+    
+</body>
+</html>
