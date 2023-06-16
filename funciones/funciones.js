@@ -76,49 +76,52 @@ const registrar = async () => {
     }
 
     const editar = (colegio) => {
-        document.getElementById('descripcion').value = '';
-        document.getElementById('latitud').value = '';
-        document.getElementById('longitud').value = '';
-        document.getElementById('descripcion').value = '';
 
-      
-        document.getElementById('direccion').value = colegio.direccion;
-        document.getElementById('latitud').value = colegio.latitud;
-        document.getElementById('longitud').value = colegio.longitud;
-        document.getElementById('descripcion').value = colegio.descripcion;
-
-
-     
-      };
-
-      const actualizar = async () => {
-        let _id = document.getElementById("id").value;
-        let _direccion = document.getElementById("direccion").value;
-        let _latitud = document.getElementById('latitud').value;
-        let _longitud = document.getElementById('longitud').value;
-        let _descripcion = document.getElementById('descripcion').value;
-      
-        let _colegio = {
-          _id: _id, // Agregar el campo _id al objeto _colegio
-          direccion: _direccion,
-          latitud: _latitud,
-          longitud: _longitud,
-          descripcion: _descripcion,
-        };
-      
-        fetch(`${url}/${_id}`, {
-          method: 'PUT',
-          mode: 'cors',
-          body: JSON.stringify(_colegio),
-          headers: { 'Content-type': 'application/json; charset=UTF-8' }
+        document.getElementById('direccion').value =''
+        document.getElementById('latitud').value =''
+        document.getElementById('longitud').value =''
+        document.getElementById('descripcion').value =''
+        document.getElementById('id').value =''
+        
+        
+        document.getElementById('id').value = colegio._id
+        document.getElementById('direccion').value = colegio.direccion
+        document.getElementById('latitud').value = colegio.latitud
+        document.getElementById('longitud').value = colegio.longitud
+        document.getElementById('descripcion').value = colegio.descripcion
+}
+        
+        const actualizar = async () => {
+        let id = document.getElementById('id').value;
+        let direccion = document.getElementById('direccion').value
+        let latitud = document.getElementById('latitud').value
+        let longitud = document.getElementById('longitud').value
+        let descripcion = document.getElementById('descripcion').value
+        
+        let colegio = {
+        direccion: direccion,
+        latitud: latitud,
+        longitud: longitud,
+        descripcion: descripcion
+        }
+        fetch(url + `?id=${id}`, {
+        method: 'PUT',
+        mode: 'cors',
+        body: JSON.stringify(colegio),//Convertir el objeto usuario a JSON
+        headers: {"Content-type": "application/json; charset=UTF-8"}
         })
-        .then((resp) => resp.json())
-        .then((json) => {
-          Swal.fire(json.msg, '', 'success').then(() => {
-            location.reload();
-          });
-        });
-      };
+        .then((resp) => resp.json()) //obtener respuesta y convertirla a json
+        .then(json => {
+        Swal.fire(
+        json.msg,
+        '',
+        'success'
+        ).then(() => {
+        location.reload();
+        })
+        })
+        
+        }
       
       
   const eliminar = (id) => {
